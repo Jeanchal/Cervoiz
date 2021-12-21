@@ -1,21 +1,53 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import Acceuil from "./pages/Acceuil";
+import Profil from "./pages/Profil";
+import Panier from "./pages/Panier";
+
+const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator
+        initialRouteName="Acceuil"
+        activeColor="#FBC95C"
+        inactiveColor="#ccc"
+        barStyle={{ backgroundColor: "#fff" }}
+      >
+        <Tab.Screen
+          name="Acceuil"
+          component={Acceuil}
+          options={{
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="home" color={color} size={35} />
+            ),
+            tabBarLabel: false,
+          }}
+        />
+        <Tab.Screen
+          name="Profil"
+          component={Profil}
+          options={{
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="account" color={color} size={35} />
+            ),
+            tabBarLabel: false,
+          }}
+        />
+        <Tab.Screen
+          name="Panier"
+          component={Panier}
+          options={{
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="cart" color={color} size={35} />
+            ),
+            tabBarLabel: false,
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
