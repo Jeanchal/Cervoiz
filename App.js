@@ -7,8 +7,6 @@ import Profil from "./pages/Profil";
 import Panier from "./pages/Panier";
 
 const Tab = createMaterialBottomTabNavigator();
-//hellofgofguf//
-/*testttt*/
 
 export default function App() {
   return (
